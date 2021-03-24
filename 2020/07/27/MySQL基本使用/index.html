@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/2 | haruki</title>
+  <title>MySQL学习 | haruki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="haruki">
-<meta property="og:url" content="http://example.com/archives/2021/02/index.html">
+  <meta name="description" content="MySQL常用操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL学习">
+<meta property="og:url" content="http://example.com/2020/07/27/MySQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="haruki">
+<meta property="og:description" content="MySQL常用操作">
 <meta property="og:locale">
+<meta property="article:published_time" content="2020-07-27T11:57:08.000Z">
+<meta property="article:modified_time" content="2021-03-24T02:46:06.744Z">
 <meta property="article:author" content="あき">
 <meta name="twitter:card" content="summary">
   
@@ -61,7 +65,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			总文章数 2
+    			总文章数 12
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -150,75 +154,163 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-MySQL基本使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/04/Win10%E4%B8%8A%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-02-04T04:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/04/Win10%E4%B8%8A%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">Win10上搭建hexo博客</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL学习
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/03/Markdown%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2021-02-03T11:32:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        
+        <a href="/2020/07/27/MySQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-07-27T11:57:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/03/Markdown%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95%E6%B5%8B%E8%AF%95/">Markdown简单语法测试</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL常用操作 </p>
+<a id="more"></a> 
 
-        <div class="article-info info-on-right">
-          
-          
 
+<p>1、 显示数据库：show databases;<br>2、 建数据库：create database  [if not exists] 数据库名;<br>3、 建数据表： create table [if not exists] 表名 (字段名1   类型。。。。。。。。)<br>create table student (编号 int auto_increment primary key, 姓名 varchar(10));<br>注意:设置了自动增长,就要定为主键,如果选择了BIT 类型,0不显示,非0显示为一个特殊符号!<br>4、 显示数据表:show tables;<br>5、 删除库: drop database [if exists] 库名;<br>6、 删除表: drop table   [if exists] 表名;<br>7、 显示表结构: desc 表名<br>8、 如何修改表结构:增长一个字段; alter table 表名 add 字段名  类型<br>9、               删除一个字段: alter table  表名 drop 字段名<br>10、          修改一个字段的属性:  alter table 表名modify 字段 新属性<br>11、 修改主键: 增加一个主键  alter table 表名 add primary key(字段名)<br>12、          删除一个主键  alter table 表名  drop primary key(字段名)<br>四、表的三种基本操作:<br>插入记录、删除记录、更新记录、 这个和sql server是一样的，你在SQL SERVER里面怎么操作，在MYSQL里面就怎么操作！没什么大区别，当然小区别还是有的。比如；insert命令，SQL SERVER2000 一次只能插入一条记录，MYSQL可以插入多条记录。<br>Insert into 表 (字段表列表) values（字段值），（字段值）。。。。。。<br>删除，更新和SQL SERVER没有什么区别，不再累述！<br>13、 删除数据库：Drop DATABASE 数据库名<br>14、 删除表：    Drop TABLE    表名<br>15、 表改名：    RENAME TABLE 旧表中  TO  新表名 数据库不能改名，但也不是绝对不能改，但改不好会造成里面的数据无法正常读出。<br>16、 库改名： 常用方法是把新库创建出来,然后把旧库里的数据导入进去.<br>五、查询： 这应该是SQL中的一大块。<br>Select 查询：也和SQL SERVER没有什么大差别：<br>关键是大家要熟练运用各种运算符，数学运算符比较简单，重点在于字符型运算符LIKE、关系运算符和逻辑运算符<br>如：查找姓王的记录：Select  * FROM YUANGONG  Where 姓名  like ‘王%’;<br>查找姓名中有五的记录：Select * FROM YUANGONG  Where 姓名  like ‘%王%’;<br>查找以王结尾的记录：Select  * FROM YUANGONG  Where 姓名  like ‘%王’;<br>其中linit是SQL SERVER没有的。<br>例如：我想显示第三条到第七条记录<br>select * from 表名 limit 2,5;<br>通配符 描述 示例<br>% 通配零个或多个任意字符<br>_(下划线) 通配任意一个字符<br>不再含有 [ ] 不同于SQL SERVER<br>注意：如果用like发现结果不正确，有可能是编码的问题<br>六、记录排序<br>利用order by 对记录进行排序<br>格式：select 字段名列表 from 表名 [where 条件] order by 排序字段1 [asc ] [desc] [排序字段2……]<br>如：按年龄对yuangong表进行升序排列！<br>Select  * from yuangong order by 年龄  asc 或  select  * from yuangong order by 年龄<br>如：按年龄对yuangong表进行降序排列！<br>Select  * from yuangong order by 年龄  desc<br>对员工表先按性别升序排列，性别相同的再按年龄从大到小排序<br>Select * from 员工表   order by   性别 asc,年龄 desc<br>七、聚集函数：<br>最大值：max()<br>最小值 min()<br>平均值avg()<br>求和: sum()<br>汇总： count ()<br>如：求每个部门的基本工资平均值<br>select 部门,avg(基本工资)  as 部门基本工资 from 员工表 group by 部门<br>显示平均基本工资大于3000的部门<br>Select  部门,avg(基本工资) from 员工表 group 部门 where avg(基本工资)&gt;3000<br>此句错误。SQL规定在分组中使用条件不能用 Where 而是用 having<br>Select  部门,avg(基本工资) from 员工表 group by  部门 having avg(基本工资)&gt;3000</p>
+<p>八、多表查询：<br>一个数据库中的多个表,存在一定的联系,怎么样正常的显示这么表的信息?<br>现在有三个表:<br>yg<br>Name  sex  age<br>宋洋  男   20<br>马冬旭 女   40<br> Gs<br>Name   title      date       单位<br>宋洋   AD详解 2006-11-10  清华大学<br>马冬旭 linux    2005-01-01   人民大学<br> dz<br>单位     地址<br>清华大学  五道口<br>人民大学   黄庄</p>
+<p>第一种方法称为:交叉连接,在SQL SERVER中又称为笛卡尔乘积<br>但是要注意的默认生成的记录总数是两表记录之积<br>select * from yg,gs;<br>select * from yg,gs where yg.name=gs.name;<br>这才是我们想要的记录<br>第二种方法是用join连接:<br>内连接<br>select * from yg join gs on yg.name=gs.name<br>左外连接<br>右外连接<br>但没有全外连接</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/07/27/MySQL%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/08/04/Service%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Service层
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/06/29/JavaWEB%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaWEB学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -266,8 +358,8 @@ setInterval("createtime()",250);
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
