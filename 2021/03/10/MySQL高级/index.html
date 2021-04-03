@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>haruki</title>
+  <title>MySQL高级 | haruki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="haruki">
-<meta property="og:url" content="http://example.com/2021/04/03/MySQL%E9%AB%98%E7%BA%A7/index.html">
+  <meta name="description" content="MySQL高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL高级">
+<meta property="og:url" content="http://example.com/2021/03/10/MySQL%E9%AB%98%E7%BA%A7/index.html">
 <meta property="og:site_name" content="haruki">
+<meta property="og:description" content="MySQL高级">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-04-03T03:46:06.591Z">
-<meta property="article:modified_time" content="2021-04-03T03:46:06.591Z">
+<meta property="article:published_time" content="2021-03-10T08:32:37.000Z">
+<meta property="article:modified_time" content="2021-04-03T03:52:24.304Z">
 <meta property="article:author" content="あき">
 <meta name="twitter:card" content="summary">
   
@@ -155,9 +157,51 @@
 <article id="post-MySQL高级" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL高级
+    </h1>
+  
+
+        
+        <a href="/2021/03/10/MySQL%E9%AB%98%E7%BA%A7/" class="archive-article-date">
+  	<time datetime="2021-03-10T08:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-10</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>MySQL高级</p>
+<a id="more"></a> 
+<p>索引：帮助MySQL高效获取数据的数据结构，提高查找效率，排好序的快速查找数据结构<br>      优点：提高数据检索效率，降低数据库IO成本，数据排序成本，CPU消耗<br>      缺点：索引也是一张表，索引也占空间，提高查询速度却降低了更新表速度。</p>
+<p>索引只做两件事：检索和排序</p>
+<p>索引分类：单值索引：一个索引只包含单个列，一个表可以有多个单列索引<br>          唯一索引：索引列的值必须唯一，可以有空值<br>          复合索引：一个索引包含多个列</p>
+<p>索引结构：B+树（真实数据只在叶子结点存储，而且叶子结点之间指针相连）</p>
+<p>以下情况需要创建索引：<br>  1.主键自动建立唯一索引<br>  2.频繁作为查询条件的字段<br>  3.查询中与其他表关联的字段，外键关系建立索引<br>  4.查询中 排序的字段和索引字段 一致，会提高效率<br>  5.查询中统计或者分组字段<br>不适合创建索引：<br>  1.频繁更新的字段<br>  2.where条件用不到的字段<br>  3.表记录少<br>  4.重复度过高字段  </p>
+<p>数据库优化方案： 1.缓存  2.用慢查询日志，再用Explain查看慢sql。</p>
+<p>Explain+SQL语句查询：<br>查询后所得的表头：<br>id：<br>    id相同：执行顺序从上往下<br>    id不同：id值大的先执行<br>    id存在相同和不同：先执行id值大的，id值相同的从上往下顺序执行  </p>
+<p>type：访问类型，至少达到range级别，ref更好。<br>   ref：返回匹配某个单独值的所有行。比如查询程序员，结果有多个<br>   range：检索给定范围的行。比如查询年龄25-35的人，结果0,1，多个 都可以  </p>
+<p>key：实际用到的索引  </p>
+<p>rows：数据扫描了多少行  </p>
+<p>MyBatis缓存机制：就是一个map，能保存查询出的一些数据。<br>  一级缓存：SqlSession级别缓存<br>      只要之前查询过的数据，就会保存在一个缓存中（也就是保存在map），下次直接从缓存中拿。<br>      不同的SqlSession使用不同的一级缓存<br>      在SqlSession期间执行任何一次增删改操作，都会把缓存清空。  </p>
+<p>  二级缓存：全局范围缓存<br>      SqlSession关闭或提交会把一级缓存数据存放在二级缓存中<br>      默认不开启，需要手动开启。  </p>
+<p>先看二级缓存再看一级缓存再看数据库<br>一二级缓存不可能同时出现同一条数据  </p>
+<p>事务：一致性是事务的最终目的，而原子性、隔离性、持久性其实都是为了实现一致性的手段<br>1.原子性<br>2.隔离性<br>3.一致性<br>4.持久性  </p>
+<p>多个事务同时操作一个数据，就会产生脏读、重复读、幻读的问题。<br>脏读：甲读到乙已修改但尚未提交的数据。<br>重复读：甲读到乙已经提交的修改数据。<br>幻读：甲读到乙已经提交的新增数据。  </p>
+<p>读未提交：都没解决<br>读已提交：解决脏读<br>重复读：解决脏读，重复读。<br>串行化：全解决  </p>
+<p>锁：<br>1.数据操作类型<br>读锁（共享锁）：甲给A加读锁，甲只能读A，不做能其他操作。 乙写A会阻塞，其他操作能进行。当一个事务为数据加上读锁后，其他事务只能对该数据加读锁，而不能对数据加写锁，直到所有的读锁释放之后其他事务才能对其加持写锁。共享锁的特性主要是为了支持并发的读取数据，读取数据的时候不支持修改，避免出现重复读的问题。  </p>
+<p>写锁（排他锁）：甲给A加写锁，甲能读写A，不能做其他操作。乙读写A会阻塞，其他操作能进行。 当一个事务为数据加上写锁时，其他请求将不能再为数据加任何锁，直到该锁释放后，其他事务才能对数据加锁。排他锁的目的是在数据修改时候，不允许其他人同时修改，也不允许其他人读取。避免了出现脏数据和脏读的问题。  </p>
+<p>读锁会阻塞写，写锁会阻塞读写。  </p>
+<p>2.数据操作粒度<br>表锁：锁住整个表，当下个事务访问该表的时候，必须等前一个事务释放了锁才能对表进行访问；特点： 并发低，锁开销小。  </p>
+<p>行锁：锁住表的某几行，其他事务访问同一张表时，只有被锁住的记录不能访问，其他的记录可正常访问；特点：并发高，锁开销大。  </p>
+<p>悲观锁：操作数据前就锁住数据，再对数据读写，在释放锁之前任何人都不能对其数据进行操作。完全保证数据的独占性和正确性，因为每次请求都会先对数据加锁， 再操作数据，最后解锁。加锁和解锁有消耗，所以性能不高。  </p>
+<p>乐观锁：操作数据时不会对操作的数据进行加锁（可以并行对数据进行操作），当数据提交的时通过版本号来判断是否有冲突。乐观锁是一种并发类型的锁，没有加锁和解锁的过程，提高了数据操作的性能;  </p>
+<p>加锁目的：解决事务的隔离性问题，为了让事务之间相互不影响，每个事务进行操作的时候都会对数据加上一把特有的锁，防止其他事务同时操作数据。  </p>
+<p>锁的实现方式：数据库里面的锁是基于索引实现的，Innodb中锁是作用在索引上，当SQL命中索引时，就产生行锁；没有命中就产生表锁。  </p>
+
       
 
       
@@ -215,7 +259,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/03/MySQL%E9%AB%98%E7%BA%A7/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/10/MySQL%E9%AB%98%E7%BA%A7/" alt="微信分享二维码">
     </div>
 </div>
 
